@@ -1,6 +1,5 @@
 //Define Variables
 var radius = 80*2;
-var point_size = 4*2;
 var center_x = 200;
 var center_y = 200;
 var font_size = "20px";
@@ -28,7 +27,7 @@ function drawCircle(){
     ctx.stroke();
 }
 
-function drawPoint(angle,distance,label){
+function drawPoint(angle,distance,label,point_size){
     var x = center_x + radius * Math.cos(-angle*Math.PI/180) * distance;
     var y = center_y + radius * Math.sin(-angle*Math.PI/180) * distance;
 
@@ -56,9 +55,12 @@ function createStargon(numPoints,connectEveryNth){
 
   drawCircle();
 
+  // make circle size slightly smaller as number of points increases
+  var circleSize = 4/(numPoints * 0.01) > 8 ? 8 : 4/(numPoints * 0.01);
+
   var angle = 360 / numPoints;
   for(var i = 0; i < numPoints; i++){
-      drawPoint(angle * i,1,"P" + i);
+      drawPoint(angle * i,1,"P" + i,circleSize);
   };
 
   // for each point, draw a line nth next point
@@ -67,12 +69,6 @@ function createStargon(numPoints,connectEveryNth){
       var point2 = {x:center_x + radius * Math.cos(-angle*(i+connectEveryNth)*Math.PI/180) * 1,y:center_y + radius * Math.sin(-angle*(i+connectEveryNth)*Math.PI/180) * 1};
       drawLine(point1,point2);
   };
-
-  // for(var i = 0; i < numPoints; i++){
-  //     var point1 = {x:center_x + radius * Math.cos(-angle*i*Math.PI/180) * 1,y:center_y + radius * Math.sin(-angle*i*Math.PI/180) * 1};
-  //     var point2 = {x:center_x + radius * Math.cos(-angle*(i+connectEveryNth)*Math.PI/180) * 1,y:center_y + radius * Math.sin(-angle*(i+connectEveryNth)*Math.PI/180) * 1};
-  //     drawLine(point1,point2);
-  // };
 };
 
 createStargon(numPointsSlider.value,nthPointsSlider.value);
