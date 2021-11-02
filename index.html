@@ -8,7 +8,25 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="myCanvas" width="300" height="300">Your browser does not support the HTML5 canvas tag.</canvas>
+  <container>
+    <canvas id="myCanvas" width="400" height="400">Your browser does not support the HTML5 canvas tag.</canvas>
+    <div>Number of Points</div>
+    <input type="range" min="3" max="25" value="3" class="slider" id="points">
+    <label id="points-label">3</label>
+    <!-- Spacer Div -->
+    <div class="spacer"></div>
+    <div>Connect Every nth Point</div>
+    <input type="range" min="1" max="25" value="1" class="slider" id="nth">
+    <label id="nth-label">1</label>
+    <div class="spacer"></div>
+    <button id="bigger">Bigger Sliders</button>
+    <div class="spacer"></div>
+    <button onclick="window.location = window.location">Reset Sliders</button>
+  </container>
+
+  <footer>
+    <p>Created by <a href="https://eliothertenstein.com">Eliot Hertenstein</a></p>
+  </footer>
 </body>
 <script src="index.js"></script>
 </html>
