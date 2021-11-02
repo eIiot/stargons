@@ -1,7 +1,7 @@
 //Define Variables
 var radius = 80*2;
-var center_x = 200;
-var center_y = 200;
+var center_x = 175;
+var center_y = 175;
 var font_size = "20px";
 
 var c = document.getElementById("myCanvas");
